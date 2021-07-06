@@ -3,6 +3,7 @@ import axios from "axios";
 import Title from "./Title/title";
 import CardPackage from "./CardPackage/cardPackage";
 import DisplayCards from "./Cards/cards";
+import FullCardDisplay from "./FullCardDisplay/fullCardDisplay";
 
 class App extends Component {
     constructor(props) {
@@ -26,10 +27,10 @@ class App extends Component {
         });
     }
 
-    nextbutton(){
+    nextButton(){
         let tempCardNumber = this.state.cardNumber;
         tempCardNumber++;
-        if(tempCardNumber === this.flashcardData.cards.length){
+        if(tempCardNumber === this.state.flashcardData.length){
             tempCardNumber = 0;
         }
         this.setState({
@@ -41,7 +42,7 @@ class App extends Component {
         let tempCardNumber = this.state.cardNumber;
         tempCardNumber--;
         if(tempCardNumber < 0)
-            tempCardNumber = this.flashcardData.cards.length - 1;
+            tempCardNumber = this.state.flashcardData.length - 1;
         this.setState({
             cardNumber: tempCardNumber
         });
@@ -55,7 +56,7 @@ class App extends Component {
                 <div>
                    <Title/> 
                    <CardPackage package={this.state.flashcardData}/>
-                   <DisplayCards card={this.state.flashcardData}/>
+                   <FullCardDisplay cards={this.state.flashcardData[this.state.cardNumber]} nextCard={() => this.nextButton()} previousCard={() => this.goBack()}/>
                 </div>
             );
         }
