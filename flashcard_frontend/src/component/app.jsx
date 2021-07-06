@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import Title from "./Title/title";
 import CardPackage from "./CardPackage/cardPackage";
+import DisplayCards from "./Cards/cards";
 
 class App extends Component {
     constructor(props) {
@@ -54,6 +55,7 @@ class App extends Component {
                 <div>
                    <Title/> 
                    <CardPackage package={this.state.flashcardData}/>
+                   <DisplayCards card={this.state.flashcardData}/>
                 </div>
             );
         }
