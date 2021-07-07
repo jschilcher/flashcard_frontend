@@ -8,7 +8,7 @@
 }
 
 .card {
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.781);
     text-align: center;
     border-right: solid black;
     border-bottom: solid black;

@@ -2,6 +2,7 @@ import React from "react";
 import DisplayCards from "../Cards/cards";
 
 function FullCardDisplay(props) {
+    console.log(props)
     return(
         <div className="row row-spacer">
                     <div className="col">

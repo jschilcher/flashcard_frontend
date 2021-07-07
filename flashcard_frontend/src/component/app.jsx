@@ -10,6 +10,7 @@ class App extends Component {
         super(props);
         this.state = {
             flashcardData: [],
+            selectedCollection: [],
             cardNumber: 0
         };
     };
@@ -24,6 +25,7 @@ class App extends Component {
         );
         this.setState({
           flashcardData: response.data,
+          selectedCollection: response.data[0]
         });
     }
 
@@ -49,6 +51,7 @@ class App extends Component {
     }
 
     render() {
+        console.log(this.state.selectedCollection.cards)
         if (this.state.flashcardData[0] === undefined) {
             return <div>Loading...</div>
         } else {
@@ -56,7 +59,7 @@ class App extends Component {
                 <div>
                    <Title/> 
                    <CardPackage package={this.state.flashcardData}/>
-                   <FullCardDisplay cards={this.state.flashcardData[this.state.cardNumber]} nextCard={() => this.nextButton()} previousCard={() => this.goBack()}/>
+                   <FullCardDisplay cards={this.state.selectedCollection.cards[this.state.cardNumber]} nextCard={() => this.nextButton()} previousCard={() => this.goBack()}/>
                 </div>
             );
         }
