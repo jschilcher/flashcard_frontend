@@ -4,6 +4,7 @@ import Title from "./Title/title";
 import CardPackage from "./CardPackage/cardPackage";
 import DisplayCards from "./Cards/cards";
 import FullCardDisplay from "./FullCardDisplay/fullCardDisplay";
+import AddCard from "./AddCard/addCard";
 
 class App extends Component {
     constructor(props) {
@@ -50,6 +51,14 @@ class App extends Component {
         });
     }
 
+    
+  addNewCard(card){
+    this.state.selectedCollection.cards.push(card);
+    this.setState({
+      cardNumber: this.state.selectedCollection.cards.length - 1
+    })
+  }
+
     render() {
         console.log(this.state.selectedCollection.cards)
         if (this.state.flashcardData[0] === undefined) {
@@ -60,6 +69,7 @@ class App extends Component {
                    <Title/> 
                    <CardPackage package={this.state.flashcardData}/>
                    <FullCardDisplay cards={this.state.selectedCollection.cards[this.state.cardNumber]} nextCard={() => this.nextButton()} previousCard={() => this.goBack()}/>
+                   <AddCard addNewCard={this.addNewCard.bind(this)}/>
                 </div>
             );
         }
